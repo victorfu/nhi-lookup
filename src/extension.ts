@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext): void {
   console.log('Extension "zz" is now active!');
   const extensionRoot = vscode.Uri.file(context.extensionPath);
   const provider = new PdfCustomProvider(extensionRoot);
-  const uri = vscode.Uri.file(context.extensionPath + "/src/pdf/1110301.pdf");
+  const uri = vscode.Uri.file(context.extensionPath + "/1110301.pdf");
 
   context.subscriptions.push(
     vscode.commands.registerCommand("nhi.lookup", () => {

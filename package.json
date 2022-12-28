@@ -2,7 +2,7 @@
   "name": "nhi365",
   "displayName": "nhi365",
   "description": "Display NHI information in VSCode.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "nhi365",
   "engines": {
     "vscode": "^1.46.0"
@@ -18,10 +18,10 @@
   "icon": "nhi.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/victorfu/nhi-lookup.git"
+    "url": "https://github.com/victorfu/nhi365.git"
   },
   "bugs": {
-    "url": "https://github.com/victorfu/nhi-lookup/issues"
+    "url": "https://github.com/victorfu/nhi365/issues"
   },
   "activationEvents": [
     "onCommand:nhi.openFile",
