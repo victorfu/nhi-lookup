@@ -27,7 +27,6 @@ export function activate(context: vscode.ExtensionContext): void {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("nhi.openV1DFile", () => {
-      console.log("File: " + dailyDocV1Uri);
       vscode.commands.executeCommand(
         "vscode.openWith",
         dailyDocV1Uri,
@@ -38,7 +37,6 @@ export function activate(context: vscode.ExtensionContext): void {
   );
   context.subscriptions.push(
     vscode.commands.registerCommand("nhi.openV2DFile", () => {
-      console.log("File: " + dailyDocV2Uri);
       vscode.commands.executeCommand(
         "vscode.openWith",
         dailyDocV2Uri,
@@ -49,7 +47,6 @@ export function activate(context: vscode.ExtensionContext): void {
   );
   context.subscriptions.push(
     vscode.commands.registerCommand("nhi.openMFile", () => {
-      console.log("File: " + monthlyDocUri);
       vscode.commands.executeCommand(
         "vscode.openWith",
         monthlyDocUri,
