@@ -1,8 +1,8 @@
 {
   "name": "nhi365",
   "displayName": "nhi365",
-  "description": "Display NHI information in VSCode.",
-  "version": "0.0.3",
+  "description": "Show NHI information in VSCode.",
+  "version": "0.0.4",
   "publisher": "nhi365",
   "engines": {
     "vscode": "^1.46.0"
@@ -24,7 +24,8 @@
     "url": "https://github.com/victorfu/nhi365/issues"
   },
   "activationEvents": [
-    "onCommand:nhi.openFile",
+    "onCommand:nhi.openV1File",
+    "onCommand:nhi.openV2File",
     "onCommand:nhi.lookup",
     "onCustomEditor:pdf.preview"
   ],
@@ -36,14 +37,23 @@
         "title": "Lookup Nhi Tag"
       },
       {
-        "command": "nhi.openFile",
-        "title": "開啟日上傳文件"
+        "command": "nhi.openV1File",
+        "title": "日上傳1.0文件"
+      },
+      {
+        "command": "nhi.openV2File",
+        "title": "日上傳2.0文件"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "nhi.openFile",
+          "command": "nhi.openV1File",
+          "group": "1_modification@100",
+          "when": "editorLangId == 'xml'"
+        },
+        {
+          "command": "nhi.openV2File",
           "group": "1_modification@100",
           "when": "editorLangId == 'xml'"
         }
