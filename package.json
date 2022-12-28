@@ -1,9 +1,9 @@
 {
-  "name": "pdf",
-  "displayName": "vscode-pdf",
-  "description": "Display pdf file in VSCode.",
-  "version": "1.2.2",
-  "publisher": "tomoki1207",
+  "name": "nhi-lookup",
+  "displayName": "nhi-lookup",
+  "description": "Display NHI information in VSCode.",
+  "version": "0.0.1",
+  "publisher": "victor",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -12,21 +12,43 @@
   ],
   "keywords": [
     "pdf",
-    "viewer"
+    "viewer",
+    "nhi"
   ],
-  "icon": "vscode-pdf.png",
+  "icon": "nhi.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomoki1207/vscode-pdfviewer.git"
+    "url": "https://github.com/victorfu/nhi-lookup.git"
   },
   "bugs": {
-    "url": "https://github.com/tomoki1207/vscode-pdfviewer/issues"
+    "url": "https://github.com/victorfu/nhi-lookup/issues"
   },
   "activationEvents": [
+    "onCommand:nhi.openFile",
+    "onCommand:nhi.lookup",
     "onCustomEditor:pdf.preview"
   ],
   "main": "./out/src/extension",
   "contributes": {
+    "commands": [
+      {
+        "command": "nhi.lookup",
+        "title": "Lookup Nhi Tag"
+      },
+      {
+        "command": "nhi.openFile",
+        "title": "開啟日上傳文件"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "nhi.openFile",
+          "group": "1_modification@100",
+          "when": "editorLangId == 'xml'"
+        }
+      ]
+    },
     "capabilities": {
       "untrustedWorkspaces": {
         "supported": true
@@ -48,7 +70,7 @@
       "title": "PDF Preview",
       "properties": {
         "pdf-preview.default.cursor": {
-          "markdownDescription": "The default cursol tool for preview.",
+          "markdownDescription": "The default cursor tool for preview.",
           "type": "string",
           "default": "select",
           "enum": [
@@ -63,7 +85,7 @@
           "pattern": "^(\\d+(?:\\.\\d+)?|auto|page-actual|page-fit|page-width)$"
         },
         "pdf-preview.default.sidebar": {
-          "markdownDescription": "Show the sidebar on load. The default visiblity of sidebar for preview.",
+          "markdownDescription": "Show the sidebar on load. The default visibility of sidebar for preview.",
           "type": "boolean",
           "default": false
         },
@@ -110,6 +132,7 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.3",
+    "glob": "^8.0.3",
     "mocha": "^10.1.0",
     "prettier": "^2.0.4",
     "typescript": "^3.7.3",

@@ -1,15 +1,15 @@
-import * as path from 'path';
-import * as vscode from 'vscode';
-import { Disposable } from './disposable';
+import * as path from "path";
+import * as vscode from "vscode";
+import { Disposable } from "./disposable";
 
 function escapeAttribute(value: string | vscode.Uri): string {
-  return value.toString().replace(/"/g, '&quot;');
+  return value.toString().replace(/"/g, "&quot;");
 }
 
-type PreviewState = 'Disposed' | 'Visible' | 'Active';
+type PreviewState = "Disposed" | "Visible" | "Active";
 
 export class PdfPreview extends Disposable {
-  private _previewState: PreviewState = 'Visible';
+  private _previewState: PreviewState = "Visible";
 
   constructor(
     private readonly extensionRoot: vscode.Uri,
@@ -18,7 +18,7 @@ export class PdfPreview extends Disposable {
   ) {
     super();
     const resourceRoot = resource.with({
-      path: resource.path.replace(/\/[^/]+?\.\w+$/, '/'),
+      path: resource.path.replace(/\/[^/]+?\.\w+$/, "/"),
     });
 
     webviewEditor.webview.options = {
@@ -29,11 +29,11 @@ export class PdfPreview extends Disposable {
     this._register(
       webviewEditor.webview.onDidReceiveMessage((message) => {
         switch (message.type) {
-          case 'reopen-as-text': {
+          case "reopen-as-text": {
             vscode.commands.executeCommand(
-              'vscode.openWith',
+              "vscode.openWith",
               resource,
-              'default',
+              "default",
               webviewEditor.viewColumn
             );
             break;
@@ -50,7 +50,7 @@ export class PdfPreview extends Disposable {
 
     this._register(
       webviewEditor.onDidDispose(() => {
-        this._previewState = 'Disposed';
+        this._previewState = "Disposed";
       })
     );
 
@@ -77,21 +77,21 @@ export class PdfPreview extends Disposable {
   }
 
   private reload(): void {
-    if (this._previewState !== 'Disposed') {
-      this.webviewEditor.webview.postMessage({ type: 'reload' });
+    if (this._previewState !== "Disposed") {
+      this.webviewEditor.webview.postMessage({ type: "reload" });
     }
   }
 
   private update(): void {
-    if (this._previewState === 'Disposed') {
+    if (this._previewState === "Disposed") {
       return;
     }
 
     if (this.webviewEditor.active) {
-      this._previewState = 'Active';
+      this._previewState = "Active";
       return;
     }
-    this._previewState = 'Visible';
+    this._previewState = "Visible";
   }
 
   private getWebviewContents(): string {
@@ -103,16 +103,16 @@ export class PdfPreview extends Disposable {
       return webview.asWebviewUri(uri);
     };
 
-    const config = vscode.workspace.getConfiguration('pdf-preview');
+    const config = vscode.workspace.getConfiguration("pdf-preview");
     const settings = {
-      cMapUrl: resolveAsUri('lib', 'web', 'cmaps/').toString(),
+      cMapUrl: resolveAsUri("lib", "web", "cmaps/").toString(),
       path: docPath.toString(),
       defaults: {
-        cursor: config.get('default.cursor') as string,
-        scale: config.get('default.scale') as string,
-        sidebar: config.get('default.sidebar') as boolean,
-        scrollMode: config.get('default.scrollMode') as string,
-        spreadMode: config.get('default.spreadMode') as string,
+        cursor: config.get("default.cursor") as string,
+        scale: config.get("default.scale") as string,
+        sidebar: config.get("default.sidebar") as boolean,
+        scrollMode: config.get("default.scrollMode") as string,
+        spreadMode: config.get("default.spreadMode") as string,
       },
     };
 
@@ -129,17 +129,17 @@ export class PdfPreview extends Disposable {
     )}">
 <title>PDF.js viewer</title>
 <link rel="resource" type="application/l10n" href="${resolveAsUri(
-      'lib',
-      'web',
-      'locale',
-      'locale.properties'
+      "lib",
+      "web",
+      "locale",
+      "locale.properties"
     )}">
-<link rel="stylesheet" href="${resolveAsUri('lib', 'web', 'viewer.css')}">
-<link rel="stylesheet" href="${resolveAsUri('lib', 'pdf.css')}">
-<script src="${resolveAsUri('lib', 'build', 'pdf.js')}"></script>
-<script src="${resolveAsUri('lib', 'build', 'pdf.worker.js')}"></script>
-<script src="${resolveAsUri('lib', 'web', 'viewer.js')}"></script>
-<script src="${resolveAsUri('lib', 'main.js')}"></script>
+<link rel="stylesheet" href="${resolveAsUri("lib", "web", "viewer.css")}">
+<link rel="stylesheet" href="${resolveAsUri("lib", "pdf.css")}">
+<script src="${resolveAsUri("lib", "build", "pdf.js")}"></script>
+<script src="${resolveAsUri("lib", "build", "pdf.worker.js")}"></script>
+<script src="${resolveAsUri("lib", "web", "viewer.js")}"></script>
+<script src="${resolveAsUri("lib", "main.js")}"></script>
 </head>`;
 
     const body = `<body tabindex="1">
@@ -539,7 +539,7 @@ export class PdfPreview extends Disposable {
     <input type="file" id="fileInput" class="hidden">
   </body>`;
 
-    const tail = ['</html>'].join('\n');
+    const tail = ["</html>"].join("\n");
 
     return head + body + tail;
   }
