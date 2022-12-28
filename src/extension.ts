@@ -4,8 +4,13 @@ import { PdfCustomProvider } from "./pdfProvider";
 export function activate(context: vscode.ExtensionContext): void {
   const extensionRoot = vscode.Uri.file(context.extensionPath);
   const provider = new PdfCustomProvider(extensionRoot);
-  const v1Uri = vscode.Uri.file(context.extensionPath + "/1.0_1110301.pdf");
-  const v2Uri = vscode.Uri.file(context.extensionPath + "/2.0_1110928.pdf");
+  const dailyDocV1Uri = vscode.Uri.file(
+    context.extensionPath + "/1.0_1110301.pdf"
+  );
+  const dailyDocV2Uri = vscode.Uri.file(
+    context.extensionPath + "/2.0_1110928.pdf"
+  );
+  const monthlyDocUri = vscode.Uri.file(context.extensionPath + "/1110429.pdf");
 
   context.subscriptions.push(
     vscode.commands.registerCommand("nhi.lookup", () => {
@@ -21,22 +26,33 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("nhi.openV1File", () => {
-      console.log("File: " + v1Uri);
+    vscode.commands.registerCommand("nhi.openV1DFile", () => {
+      console.log("File: " + dailyDocV1Uri);
       vscode.commands.executeCommand(
         "vscode.openWith",
-        v1Uri,
+        dailyDocV1Uri,
         PdfCustomProvider.viewType,
         vscode.ViewColumn.Beside
       );
     })
   );
   context.subscriptions.push(
-    vscode.commands.registerCommand("nhi.openV2File", () => {
-      console.log("File: " + v2Uri);
+    vscode.commands.registerCommand("nhi.openV2DFile", () => {
+      console.log("File: " + dailyDocV2Uri);
       vscode.commands.executeCommand(
         "vscode.openWith",
-        v2Uri,
+        dailyDocV2Uri,
+        PdfCustomProvider.viewType,
+        vscode.ViewColumn.Beside
+      );
+    })
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openMFile", () => {
+      console.log("File: " + monthlyDocUri);
+      vscode.commands.executeCommand(
+        "vscode.openWith",
+        monthlyDocUri,
         PdfCustomProvider.viewType,
         vscode.ViewColumn.Beside
       );

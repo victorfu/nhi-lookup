@@ -24,8 +24,9 @@
     "url": "https://github.com/victorfu/nhi365/issues"
   },
   "activationEvents": [
-    "onCommand:nhi.openV1File",
-    "onCommand:nhi.openV2File",
+    "onCommand:nhi.openV1DFile",
+    "onCommand:nhi.openV2DFile",
+    "onCommand:nhi.openMFile",
     "onCommand:nhi.lookup",
     "onCustomEditor:pdf.preview"
   ],
@@ -37,23 +38,32 @@
         "title": "Lookup Nhi Tag"
       },
       {
-        "command": "nhi.openV1File",
+        "command": "nhi.openV1DFile",
         "title": "日上傳1.0文件"
       },
       {
-        "command": "nhi.openV2File",
+        "command": "nhi.openV2DFile",
         "title": "日上傳2.0文件"
+      },
+      {
+        "command": "nhi.openMFile",
+        "title": "月申報文件"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "nhi.openV1File",
+          "command": "nhi.openV1DFile",
           "group": "1_modification@100",
           "when": "editorLangId == 'xml'"
         },
         {
-          "command": "nhi.openV2File",
+          "command": "nhi.openV2DFile",
+          "group": "1_modification@100",
+          "when": "editorLangId == 'xml'"
+        },
+        {
+          "command": "nhi.openMFile",
           "group": "1_modification@100",
           "when": "editorLangId == 'xml'"
         }
