@@ -1,6 +1,6 @@
 {
-  "name": "nhi-lookup",
-  "displayName": "nhi-lookup",
+  "name": "nhi365",
+  "displayName": "nhi365",
   "description": "Display NHI information in VSCode.",
   "version": "0.0.1",
   "publisher": "victor",

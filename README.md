@@ -1,4 +1,4 @@
-# NHI 101
+# NHI365
 
 Display NHI information in VSCode.
 
