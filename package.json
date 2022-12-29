@@ -2,7 +2,7 @@
   "name": "nhi365",
   "displayName": "nhi365",
   "description": "Show NHI information in VSCode.",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "publisher": "nhi365",
   "engines": {
     "vscode": "^1.46.0"
