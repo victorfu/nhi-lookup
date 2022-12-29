@@ -76,6 +76,15 @@ export class PdfPreview extends Disposable {
     this.update();
   }
 
+  public goToPage(page: number): void {
+    if (this._previewState !== "Disposed") {
+      this.webviewEditor.webview.postMessage({
+        type: "goToPage",
+        value: page,
+      });
+    }
+  }
+
   private reload(): void {
     if (this._previewState !== "Disposed") {
       this.webviewEditor.webview.postMessage({ type: "reload" });
