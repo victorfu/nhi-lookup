@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { NhiDocumentProvider } from "./nhiDocumentProvider";
 import {
   findTagPage,
   TYPE_DAILY_DOC_V1,
@@ -99,6 +100,12 @@ export function activate(context: vscode.ExtensionContext): void {
       }
     )
   );
+
+  const view = vscode.window.createTreeView("nhi-docs", {
+    treeDataProvider: new NhiDocumentProvider(),
+    showCollapseAll: true,
+  });
+  context.subscriptions.push(view);
 }
 
 export function deactivate(): void {}

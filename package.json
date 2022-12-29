@@ -32,6 +32,24 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "nhi-explorer",
+          "title": "健保瀏覽器",
+          "icon": "nhi.svg"
+        }
+      ]
+    },
+    "views": {
+      "nhi-explorer": [
+        {
+          "id": "nhi-docs",
+          "name": "開發文件",
+          "icon": "nhi.svg"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "nhi.lookup",
