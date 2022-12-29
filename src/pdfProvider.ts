@@ -13,6 +13,10 @@ export class PdfCustomProvider implements vscode.CustomReadonlyEditorProvider {
     return { uri, dispose: (): void => {} };
   }
 
+  public goToPage(page: number): void {
+    this._activePreview?.goToPage(page);
+  }
+
   public async resolveCustomEditor(
     document: vscode.CustomDocument,
     webviewEditor: vscode.WebviewPanel
@@ -34,7 +38,8 @@ export class PdfCustomProvider implements vscode.CustomReadonlyEditorProvider {
       if (webviewEditor.active) {
         this.setActivePreview(preview);
       } else if (this._activePreview === preview && !webviewEditor.active) {
-        this.setActivePreview(undefined);
+        // TODO: disable this for now, because we need to control the active preview. Consider better way to handle this
+        // this.setActivePreview(undefined);
       }
     });
   }

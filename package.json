@@ -2,7 +2,7 @@
   "name": "nhi365",
   "displayName": "nhi365",
   "description": "Show NHI information in VSCode.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "nhi365",
   "engines": {
     "vscode": "^1.46.0"
@@ -35,7 +35,7 @@
     "commands": [
       {
         "command": "nhi.lookup",
-        "title": "Lookup Nhi Tag"
+        "title": "查詢..."
       },
       {
         "command": "nhi.openV1DFile",
@@ -64,6 +64,11 @@
         },
         {
           "command": "nhi.openMFile",
+          "group": "1_modification@100",
+          "when": "editorLangId == 'xml'"
+        },
+        {
+          "command": "nhi.lookup",
           "group": "1_modification@100",
           "when": "editorLangId == 'xml'"
         }
