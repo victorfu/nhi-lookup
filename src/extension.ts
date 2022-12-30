@@ -12,6 +12,7 @@ import {
   TYPE_DAILY_DOC_V2,
   TYPE_MONTHLY_DOC,
 } from "./pages";
+import { HelloWorldPanel } from "./panels/HelloWorldPanel";
 import { PdfCustomProvider } from "./pdfProvider";
 
 const openFile = async (uri: vscode.Uri, isFull: boolean): Promise<void> => {
@@ -122,6 +123,12 @@ export function activate(context: vscode.ExtensionContext): void {
         },
       }
     )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.showHelloWorld", () => {
+      HelloWorldPanel.render(context.extensionUri);
+    })
   );
 }
 

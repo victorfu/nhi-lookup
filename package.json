@@ -29,6 +29,7 @@
     "onCommand:nhi.openMFile",
     "onCommand:nhi.openPFile",
     "onCommand:nhi.lookup",
+    "onCommand:nhi.showHelloWorld",
     "onCustomEditor:pdf.preview"
   ],
   "main": "./out/src/extension",
@@ -87,6 +88,10 @@
       {
         "command": "nhi.openPFileFull",
         "title": "牙科支付標準"
+      },
+      {
+        "command": "nhi.showHelloWorld",
+        "title": "Show Hello World"
       }
     ],
     "menus": {
@@ -177,6 +182,10 @@
     }
   },
   "scripts": {
+    "install:all": "npm install && cd webview-ui && npm install",
+    "start:webview": "cd webview-ui && npm run start",
+    "build:webview": "cd webview-ui && npm run build",
+    "test:webview": "cd webview-ui && npm run test",
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -w -p ./",
