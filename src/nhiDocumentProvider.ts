@@ -34,6 +34,23 @@ class DocumentItem extends vscode.TreeItem {
   };
 }
 
+export const getDailyDocV1Uri = (extensionPath: string): vscode.Uri => {
+  const dailyDocV1Uri = vscode.Uri.file(extensionPath + "/1.0_1110301.pdf");
+  return dailyDocV1Uri;
+};
+export const getDailyDocV2Uri = (extensionPath: string): vscode.Uri => {
+  const dailyDocV2Uri = vscode.Uri.file(extensionPath + "/2.0_1110928.pdf");
+  return dailyDocV2Uri;
+};
+export const getMonthlyDocUri = (extensionPath: string): vscode.Uri => {
+  const monthlyDocUri = vscode.Uri.file(extensionPath + "/1110429.pdf");
+  return monthlyDocUri;
+};
+export const getPayDocUri = (extensionPath: string): vscode.Uri => {
+  const payDocUri = vscode.Uri.file(extensionPath + "/1111201.pdf");
+  return payDocUri;
+};
+
 export class NhiDocumentProvider
   implements vscode.TreeDataProvider<DocumentItem> {
   constructor() {}
