@@ -267,6 +267,7 @@ const MONTHLY_DOC_JSON = {
 export const TYPE_DAILY_DOC_V1 = "TYPE_DAILY_DOC_V1";
 export const TYPE_DAILY_DOC_V2 = "TYPE_DAILY_DOC_V2";
 export const TYPE_MONTHLY_DOC = "TYPE_MONTHLY_DOC";
+export const TYPE_PAY_DOC = "TYPE_PAY_DOC";
 export const TYPE_NONE = "TYPE_NONE";
 
 const containsUpperCase = (str: string): boolean => str !== str.toLowerCase();

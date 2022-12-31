@@ -18,29 +18,38 @@ export function activate(context: vscode.ExtensionContext): void {
     context.extensionPath + "/2.0_1110928.pdf"
   );
   const monthlyDocUri = vscode.Uri.file(context.extensionPath + "/1110429.pdf");
+  const payDocUri = vscode.Uri.file(context.extensionPath + "/1111201.pdf");
 
-  const openDailyDocV1 = async (): Promise<void> => {
+  const openDailyDocV1 = async (isFull: boolean): Promise<void> => {
     await vscode.commands.executeCommand(
       "vscode.openWith",
       dailyDocV1Uri,
       PdfCustomProvider.viewType,
-      vscode.ViewColumn.Beside
+      isFull ? vscode.ViewColumn.One : vscode.ViewColumn.Beside
     );
   };
-  const openDailyDocV2 = async (): Promise<void> => {
+  const openDailyDocV2 = async (isFull: boolean): Promise<void> => {
     await vscode.commands.executeCommand(
       "vscode.openWith",
       dailyDocV2Uri,
       PdfCustomProvider.viewType,
-      vscode.ViewColumn.Beside
+      isFull ? vscode.ViewColumn.One : vscode.ViewColumn.Beside
     );
   };
-  const openMonthlyDoc = async (): Promise<void> => {
+  const openMonthlyDoc = async (isFull: boolean): Promise<void> => {
     await vscode.commands.executeCommand(
       "vscode.openWith",
       monthlyDocUri,
       PdfCustomProvider.viewType,
-      vscode.ViewColumn.Beside
+      isFull ? vscode.ViewColumn.One : vscode.ViewColumn.Beside
+    );
+  };
+  const openPayDoc = async (isFull: boolean): Promise<void> => {
+    await vscode.commands.executeCommand(
+      "vscode.openWith",
+      payDocUri,
+      PdfCustomProvider.viewType,
+      isFull ? vscode.ViewColumn.One : vscode.ViewColumn.Beside
     );
   };
 
@@ -61,11 +70,11 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.window.showInformationMessage("查詢中...");
 
         if (type === TYPE_DAILY_DOC_V1) {
-          await openDailyDocV1();
+          await openDailyDocV1(false);
         } else if (type === TYPE_DAILY_DOC_V2) {
-          await openDailyDocV2();
+          await openDailyDocV2(false);
         } else if (type === TYPE_MONTHLY_DOC) {
-          await openMonthlyDoc();
+          await openMonthlyDoc(false);
         }
 
         setTimeout(() => {
@@ -79,13 +88,40 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("nhi.openV1DFile", openDailyDocV1)
+    vscode.commands.registerCommand("nhi.openV1DFile", () =>
+      openDailyDocV1(false)
+    )
   );
   context.subscriptions.push(
-    vscode.commands.registerCommand("nhi.openV2DFile", openDailyDocV2)
+    vscode.commands.registerCommand("nhi.openV2DFile", () =>
+      openDailyDocV2(false)
+    )
   );
   context.subscriptions.push(
-    vscode.commands.registerCommand("nhi.openMFile", openMonthlyDoc)
+    vscode.commands.registerCommand("nhi.openMFile", () =>
+      openMonthlyDoc(false)
+    )
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openPFile", () => openPayDoc(false))
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openV1DFileFull", () =>
+      openDailyDocV1(true)
+    )
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openV2DFileFull", () =>
+      openDailyDocV2(true)
+    )
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openMFileFull", () =>
+      openMonthlyDoc(true)
+    )
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openPFileFull", () => openPayDoc(true))
   );
 
   context.subscriptions.push(

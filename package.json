@@ -27,6 +27,7 @@
     "onCommand:nhi.openV1DFile",
     "onCommand:nhi.openV2DFile",
     "onCommand:nhi.openMFile",
+    "onCommand:nhi.openPFile",
     "onCommand:nhi.lookup",
     "onCustomEditor:pdf.preview"
   ],
@@ -66,6 +67,26 @@
       {
         "command": "nhi.openMFile",
         "title": "月申報文件"
+      },
+      {
+        "command": "nhi.openPFile",
+        "title": "牙科支付標準"
+      },
+      {
+        "command": "nhi.openV1DFileFull",
+        "title": "日上傳1.0文件"
+      },
+      {
+        "command": "nhi.openV2DFileFull",
+        "title": "日上傳2.0文件"
+      },
+      {
+        "command": "nhi.openMFileFull",
+        "title": "月申報文件"
+      },
+      {
+        "command": "nhi.openPFileFull",
+        "title": "牙科支付標準"
       }
     ],
     "menus": {
@@ -164,12 +185,11 @@
     "lint": "eslint -c .eslintrc.json --ext .ts ./src",
     "package": "vsce package"
   },
-  "dependencies": {
-    "@types/vscode": "^1.46.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/mocha": "^10.0.1",
     "@types/node": "^12.12.21",
+    "@types/vscode": "^1.46.0",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
     "eslint": "^6.8.0",

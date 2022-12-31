@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import * as path from "path";
 
-class Dependency extends vscode.TreeItem {
+class DocumentItem extends vscode.TreeItem {
   constructor(
     public readonly label: string,
     private version: string,
@@ -35,38 +35,46 @@ class Dependency extends vscode.TreeItem {
 }
 
 export class NhiDocumentProvider
-  implements vscode.TreeDataProvider<Dependency> {
+  implements vscode.TreeDataProvider<DocumentItem> {
   constructor() {}
 
-  getTreeItem(element: Dependency): vscode.TreeItem {
+  getTreeItem(element: DocumentItem): vscode.TreeItem {
     return element;
   }
 
-  getChildren(): Thenable<Dependency[]> {
-    vscode.window.showInformationMessage("No dependency in empty workspace");
+  getChildren(): Thenable<DocumentItem[]> {
     return Promise.resolve([
-      new Dependency(
+      new DocumentItem(
         "日上傳1.0文件",
         "",
         vscode.TreeItemCollapsibleState.None,
         {
           title: "openV1DFile",
-          command: "nhi.openV1DFile",
+          command: "nhi.openV1DFileFull",
         }
       ),
-      new Dependency(
+      new DocumentItem(
         "日上傳2.0文件",
         "",
         vscode.TreeItemCollapsibleState.None,
         {
           title: "openV2DFile",
-          command: "nhi.openV2DFile",
+          command: "nhi.openV2DFileFull",
         }
       ),
-      new Dependency("月申報文件", "", vscode.TreeItemCollapsibleState.None, {
+      new DocumentItem("月申報文件", "", vscode.TreeItemCollapsibleState.None, {
         title: "openMFile",
-        command: "nhi.openMFile",
+        command: "nhi.openMFileFull",
       }),
+      new DocumentItem(
+        "牙科支付標準",
+        "",
+        vscode.TreeItemCollapsibleState.None,
+        {
+          title: "openPayFile",
+          command: "nhi.openPFileFull",
+        }
+      ),
     ]);
   }
 }
