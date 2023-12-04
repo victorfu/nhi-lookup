@@ -47,7 +47,7 @@ export const getMonthlyDocUri = (extensionPath: string): vscode.Uri => {
   return monthlyDocUri;
 };
 export const getPayDocUri = (extensionPath: string): vscode.Uri => {
-  const payDocUri = vscode.Uri.file(extensionPath + "/1120301.pdf");
+  const payDocUri = vscode.Uri.file(extensionPath + "/1120825.pdf");
   return payDocUri;
 };
 
