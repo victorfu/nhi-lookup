@@ -2,7 +2,7 @@
   "name": "nhi365",
   "displayName": "nhi365",
   "description": "Show NHI information in VSCode.",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "publisher": "nhi365",
   "engines": {
     "vscode": "^1.46.0"
@@ -28,6 +28,7 @@
     "onCommand:nhi.openV2DFile",
     "onCommand:nhi.openMFile",
     "onCommand:nhi.openPFile",
+    "onCommand:nhi.openNhiCardFile",
     "onCommand:nhi.lookup",
     "onCustomEditor:pdf.preview"
   ],
@@ -73,6 +74,10 @@
         "title": "牙科支付標準"
       },
       {
+        "command": "nhi.openNhiCardFile",
+        "title": "健保卡格式"
+      },
+      {
         "command": "nhi.openV1DFileFull",
         "title": "日上傳1.0文件"
       },
@@ -87,6 +92,10 @@
       {
         "command": "nhi.openPFileFull",
         "title": "牙科支付標準"
+      },
+      {
+        "command": "nhi.openNhiCardFileFull",
+        "title": "健保卡格式"
       }
     ],
     "menus": {
