@@ -3,6 +3,7 @@ import {
   getDailyDocV1Uri,
   getDailyDocV2Uri,
   getMonthlyDocUri,
+  getNhiCardDocUri,
   getPayDocUri,
   NhiDocumentProvider,
 } from "./nhiDocumentProvider";
@@ -30,6 +31,7 @@ export function activate(context: vscode.ExtensionContext): void {
   const dailyDocV2Uri = getDailyDocV2Uri(context.extensionPath);
   const monthlyDocUri = getMonthlyDocUri(context.extensionPath);
   const payDocUri = getPayDocUri(context.extensionPath);
+  const nhiCardDocUri = getNhiCardDocUri(context.extensionPath);
 
   context.subscriptions.push(
     vscode.commands.registerCommand("nhi.openV1DFile", () =>
@@ -52,6 +54,11 @@ export function activate(context: vscode.ExtensionContext): void {
     )
   );
   context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openNhiCardFile", () =>
+      openFile(nhiCardDocUri, false)
+    )
+  );
+  context.subscriptions.push(
     vscode.commands.registerCommand("nhi.openV1DFileFull", () =>
       openFile(dailyDocV1Uri, true)
     )
@@ -69,6 +76,11 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.commands.registerCommand("nhi.openPFileFull", () =>
       openFile(payDocUri, true)
+    )
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand("nhi.openNhiCardFileFull", () =>
+      openFile(nhiCardDocUri, true)
     )
   );
   context.subscriptions.push(

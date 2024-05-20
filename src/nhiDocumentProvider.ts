@@ -50,6 +50,10 @@ export const getPayDocUri = (extensionPath: string): vscode.Uri => {
   const payDocUri = vscode.Uri.file(extensionPath + "/pay_std_1121101.pdf");
   return payDocUri;
 };
+export const getNhiCardDocUri = (extensionPath: string): vscode.Uri => {
+  const nhiCardDocUri = vscode.Uri.file(extensionPath + "/nhicard_1041116.pdf");
+  return nhiCardDocUri;
+};
 
 export class NhiDocumentProvider
   implements vscode.TreeDataProvider<DocumentItem> {
