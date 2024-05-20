@@ -96,6 +96,10 @@ export class NhiDocumentProvider
           command: "nhi.openPFileFull",
         }
       ),
+      new DocumentItem("健保卡格式", "", vscode.TreeItemCollapsibleState.None, {
+        title: "openNhiCardFile",
+        command: "nhi.openNhiCardFileFull",
+      }),
     ]);
   }
 }
