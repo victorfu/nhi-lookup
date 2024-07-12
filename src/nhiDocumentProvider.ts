@@ -39,7 +39,7 @@ export const getDailyDocV1Uri = (extensionPath: string): vscode.Uri => {
   return dailyDocV1Uri;
 };
 export const getDailyDocV2Uri = (extensionPath: string): vscode.Uri => {
-  const dailyDocV2Uri = vscode.Uri.file(extensionPath + "/2.0_1120831.pdf");
+  const dailyDocV2Uri = vscode.Uri.file(extensionPath + "/nhi2.pdf");
   return dailyDocV2Uri;
 };
 export const getMonthlyDocUri = (extensionPath: string): vscode.Uri => {
